@@ -2,6 +2,7 @@
 # Zadanie 2
 
 ![[Pasted image 20250510182723.png]]
+!(Pasted image 20250510182723.png)
 
 ```
 for i <- i to n do:
