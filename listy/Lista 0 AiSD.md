@@ -3,6 +3,7 @@
 
 ![[Pasted image 20250510182723.png]]
 !(Pasted image 20250510182723.png)
+![alt text](Pasted image 20250510182723.png)
 
 ```
 for i <- i to n do:
