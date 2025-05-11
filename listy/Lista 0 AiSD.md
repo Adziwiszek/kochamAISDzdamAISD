@@ -138,6 +138,26 @@ Pod koniec sprawdzamy dla każdej pary $\{v_i, u_i\}$ podany wyżej warunek, że
 ---
 
 # Zadanie 8
+![alt text](image-1.png)
+Jak działa algorytm?
+
+![alt text](image.png)
+Proceudra `buduj - kopiec` zakłada że ostatni rząd w kopcu jest dobrze uporządkowany i dla każdego elemntu powyżej wykonujmy procedure `przesuń - niżej` dzięki której każdy uporządkowujemy dane drzewo. Co nam daje małe dobrze zbudowane kopce, dzięki którym tworzymy większy kopiec.
+
+## Złożoność 
+
+Zauważmy ża dla każdego wierzchołka w jednym z różwoych trójkątów, schodzimy w dół co najwyżej raz.
+Czyli dla np. korzenia możemy zejść co najwyżej 3 razy (znajduje się w 3 trójkątach) 
+
+Aby obliczyć złożoność zliczmy ile razy każdy wierzchołek może zejść w dół.
+Zauważmy że kopiec n elementowy ma $2^{\lfloor log(n) \rfloor}$ poziomów
+
+$$
+\frac{n}{2} + \frac{n}{4}+\frac{n}{8} + ... +\frac{n}{2^{\lfloor log(n) \rfloor}}= n\cdot\sum^{log(n)}_{k=1} \frac{1}{2^k} \leq n \cdot\sum^{\infty}_{k=1} \frac{1}{2^k} = n \cdot 2 
+\\
+= O(n)
+$$
+
 
 ---
 
