@@ -11,9 +11,15 @@ for i <- i to n do:
 		j <- j + 1
 ```
 
-1) koszt P(i, j) to $\Theta(1)$  
-	$\Theta(n^2)$
+
+Pętla while wykona się $n - i$ razy dla ustalonego $i$.
+
+1) koszt P(i, j) to $\Theta(1)$ 
+	Koszt wywołania pętli while to $n-1$.
+	$\sum_{i=1}^{n} n-i = n^2 - \frac{n(n+1)}{2} = \frac{n(n-1)}{2}=\Theta(n^2)$
 2) koszt P(i, j) to $\Theta(j)$
+	Koszt wywołania pętli while to $\Theta(\frac{n^2-i^2}{2})$ 
+	$\sum_{i=1}^{n} \Theta(\frac{n^2-i^2}{2}) = \Theta(\frac{n^3 - \sum_{i=1}^{n} i^2}{2})=\Theta(\frac{n^3}{2} - \frac{n(n+1)(2n+1)}{12})=\Theta(n^3)$
 	
 
 ```
@@ -26,7 +32,9 @@ for i <- i to n do:
 
 
 1) koszt P(i, j) to $\Theta(1)$  
+	Zewnętrzna pętla wykonuje się $\Omega(n)$ razy, więc stąd mamy ograniczenie dolne. 
 2) koszt P(i, j) to $\Theta(j)$
+
 
 ---
 
@@ -111,7 +119,32 @@ def findMin(node):
 	return node
 ```
 
+
+**Uzasadnienie:**
+Jeżeli wierzchołek nie ma któregoś dziecka to możemy podpiąć to drugie w jego miejsce. Jeżeli wierzchołek ma obydwoje dzieci to w miejsce usuwanego wierzchołka możemy wstawić najmniejszy wierzchołek z prawego poddrzewa. Porządek zostanie zachowany, bo wszystkie elementy z lewego poddrzewa będą od niego większe a te z prawego większe. Wtedy musimy jeszcze tylko (rekurencyjnie) usunąć ten element z prawego poddrzewa.
+
 ## Znajdowanie następnego co do wielkości klucza
+
+```
+def findSuccessor(T, key):
+	node <- findNode(T, key)
+	if node == NULL: 
+		return NULL
+	if node.right != NULL:
+		return findMin(node.right, NULL)
+	successor <- NULL
+	ancestor <- T
+	while ancestor != node:
+		if k < ancestor.key:
+			successor <- ancestor
+			ancestor <- ancestor.left
+		else:
+			ancestor <- ancestor.right
+	return successor
+```
+
+**Uzasadnienie:**
+Jeśli wierzchołek z szukanym kluczem ma prawe poddrzewo to jego następcą będzie minimalny wierzchołek w jego prawym poddrzewie. Jeżeli nie ma prawego poddrzewa to musimy się cofnąć do góry i znaleźć pierwszy wierzchołek, na drodze od wierzchołka z kluczem $k$ do korzenia, który jest lewym dzieckiem. Przodek tego lewego dziecka jest wtedy następcą wierzchołka z kluczem $k$, bo jest najmniejszym z większych wierzchołków.
 
 ---
 
