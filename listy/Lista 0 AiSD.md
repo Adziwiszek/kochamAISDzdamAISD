@@ -1,10 +1,7 @@
 
 # Zadanie 2
 
-![[Pasted image 20250510182723.png]]
-!(Pasted image 20250510182723.png)
-![alt text](Pasted image 20250510182723.png)
-
+![alt text](image-2.png)
 ```
 for i <- i to n do:
 	j <- i
@@ -42,11 +39,13 @@ for i <- i to n do:
 
 # Zadanie 3
 
+![alt text](image-3.png)
+
 ---
 
 # Zadanie 4
 
-![[Pasted image 20250511073133.png]]
+![alt text](image-4.png)
 
 ## Liczba wierzchołków
 
@@ -70,7 +69,7 @@ def maxD(T)
 
 # Zadanie 5
 
-![[Pasted image 20250511074254.png]]
+![alt text](image-5.png)
 
 ## Wstawianie zadanego klucza do T
 
@@ -152,11 +151,13 @@ Jeśli wierzchołek z szukanym kluczem ma prawe poddrzewo to jego następcą bę
 
 # Zadanie 6
 
+![alt text](image-6.png)
+
 ---
 
 # Zadanie 7
 
-![[Pasted image 20250311083254.png]]
+![alt text](image-7.png)
 
 Najpierw szukamy korzenia drzewa przechodząc przez listę krawędzi i patrząc, który wierzchołek jest bez ojca.
 
@@ -173,6 +174,9 @@ Pod koniec sprawdzamy dla każdej pary $\{v_i, u_i\}$ podany wyżej warunek, że
 ---
 
 # Zadanie 8
+
+![alt text](image-8.png)
+
 ![alt text](image-1.png)
 Jak działa algorytm?
 
@@ -198,7 +202,7 @@ $$
 
 # Zadanie 9
 
-![[Pasted image 20250309150519.png]]
+![alt text](image-11.png)
 
 $a_n x^2 + b_n x + c_n$ 
 
@@ -276,7 +280,7 @@ $$
 
 # Zadanie 10
 
-![[Pasted image 20250309124923.png]]
+![alt text](image-9.png)
 
 Zmieniamy graf na skierowany. Dla każdego wierzchołka jego waga staje się wagą każdej krawędzi która do niego wchodzi.
 
@@ -292,14 +296,13 @@ Wiemy, że Dijkstra działa i znajduje najkrótsze ścieżki.
 
 # Zadanie 11
 
-![[Pasted image 20250309130101.png]]
+![alt text](image-10.png)
 
 Tak, algorytm poprawnie wylicza długości tych ścieżek.
 Algorytm Dijkstry nie działa z negatywnymi wagami, bo nie updateuje raz odwiedzonych już wierzchołków.
 Negatywne wagi też nie są odpowiednie, bo może się okazać, że przez nie tworzy nam się ścieżka (która nie jest prosta) o koszcie $-\infty$.
 
 Na poniższym przykładzie widać, że algorytm Dijkstry nie zadziała. Zaczynając w A ustawi koszt dojścia do C na 2. Następnie kiedy odwiedzi B, to nie rozważy drogi do C, bo C jest już wśród odwiedzonych wierzchołków. Czyli koszt C pozostanie 2, nie zostanie uaktualniony do -5.
-![[Pasted image 20250309145344.png]]
 
 Teraz rozważmy sytuację, gdy zaczynamy z wierzchołka A, który jest połączony jedną (jedyną) krawędzią z negatywną wagą z jakimś wierzchołkiem B.
 

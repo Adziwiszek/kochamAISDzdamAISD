@@ -1,12 +1,38 @@
+# Zadanie 1
+
+![alt text](image-20.png)
+
+---
+
+# Zadanie 2
+
+![alt text](image-21.png)
+
+---
+
 # Zadanie 3
 
-![[Pasted image 20250320133619.png]]
+![alt text](image-22.png)
 
 1) pokazać, że każdą kwotę da się wydać za pomocą Fibonacciego
 
+---
+
+# Zadanie 4
+
+![alt text](image-23.png)
+
+---
+
+# Zadanie 5
+
+![alt text](image-24.png)
+
+---
+
 # Zadanie 6
 
-![[Pasted image 20250326111207.png]]
+![alt text](image-25.png)
 
 **Lemat 1**
 Załóżmy, że mamy drzewo maksymalnie pokolorowane (n kolorowań) dla pewnego k. Po doczepieniu s wierzchołków (przynajmniej 1 dla każdego liścia) będzie pokolorowane dla $k' = k + 2$ przez $n + s$ wierzchołków (kolorujemy te nowe liście)
@@ -47,7 +73,7 @@ Z **Lematu 1** to kolorowanie będzie maksymalne.
 
 # Zadanie 7
 
-![[Pasted image 20250326113142.png]]
+![alt text](image-26.png)
 
 ## Lemat 1
 
@@ -100,10 +126,17 @@ Znajdujemy dwa najbardziej oddalone wierzchołki dwoma dfsami. $O(n + m)$
 odpalamy dfsa z jednego z wierzchołków średnicy i liczymy wierzchołki najbardziej oddalone od średnicy. Jak mamy krawędź $v \rightarrow u$ to jeśli oba są na średnicy to nic nie robimy a w p.p. $d[u] = d[v]+1$  
 
 ---
+
 # Zadanie 8
 
-![[Pasted image 20250328101531.png]]
+![alt text](image-27.png)
 
 
 1) możemy zamiast przekształcać pi w sigme to pi w identyczność
 2) problem znalezienia minimalnego kosztu swapów jest równoważny 
+
+---
+
+# Zadanie 9
+
+![alt text](image-28.png)

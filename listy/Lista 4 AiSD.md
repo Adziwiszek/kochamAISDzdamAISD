@@ -1,40 +1,12 @@
 # Zadanie 1
 
-![[Pasted image 20250417130415.png]]
+![alt text](image-39.png)
 
-
-**Znajdowanie długości dwóch najkrótszych tras**
-to samo co na wykładzie, ale pod koniec zwracamy drugi co do minimalności koszt.
-
-```python
-for j in range(1,m):
-    for i in range(0,n):
-        d[i][j] = a[i][j] + min(d[i-1][j-1], d[i][j-1], d[i+1][j-1])
-
-second_min_dist = second_min([d[i][m-1] for i in range(n)])
-
-def trasa(i, j):
-    if j == i: return i
-    k = 0
-    if d[i-1][j-1] < d[i][j-1]:
-        k = i - 1
-    else:
-        k = i
-    if d[i+1][j-1] < d[k][j-1]:
-        k = i + 1
-    return trasa(k, j-1) + [i]
-
-```
-
-**Czemu to będzie druga najtańsza trasa?**
-
-Nie będzie pierwsza bo bierzemy drugi najmniejszy koszt z ostatniej kolumny
-Nie będzie trasy o mniejszym koszcie (poza minimalną), bo second_min tego nie zwrócił
+---
 
 # Zadanie 2
 
-![[Pasted image 20250417141024.png]]
-
+![alt text](image-40.png)
 
 **To jest problem komiwojażera (TSP), jest NP-zupełny!!!!**
 
@@ -78,7 +50,7 @@ Powtarzamy tę czynność dopóki nie dojdziemy do $Dp[\{v\}][v]$
 
 # Zadanie 3
 
-![[Pasted image 20250418215623.png]]
+![alt text](image-41.png)
 
 $Dp[x][y]$
 
@@ -148,7 +120,7 @@ Czemu musimy pod koniec wypistywać reszte elementow z ciagow w tych dwoch while
 
 # Zadanie 4
 
-![[Pasted image 20250419101822.png]]
+![alt text](image-42.png)
 
 **Sposób Hirschberga. Połączenie DP i dziel i zwyciężaj.**
 Definicje:
@@ -226,9 +198,10 @@ $$
 Poprawność wynika z lematu 1.
 
 ---
+
 # Zadanie 5
 
-![[Pasted image 20250422102933.png]]
+![alt text](image-43.png)
 
 **Fakt:**
 $$\forall v\in V \: \forall w\in V \:\:d(v,w) \geq 2 \Rightarrow vw \cancel{\in}E $$
@@ -320,215 +293,18 @@ Czas działania $O(n)$, pamięciowo $O(n)$.
 
 # Zadanie 6
 
-![[Pasted image 20250502191830.png]]
-
-## Zawiera podciąg "aaabb"
-
-```
-DP[x][y][5] - how much "aaabb" we matched so far
-```
-
-Na początku wszystko poza `DP[0][0][0]` to $-\infty$ 
-
-```
-for i from 0 to m:
-for j from 0 to n:
-for k from 0 to 5:
-	if i == 0 or j == 0:
-		DP[i][j][k] = 0 if k == 0 else -infinity
-		continue
-	if x[i] == y[j]:
-		DP[i][j][k] = max(DP[i-1][j-1][k] + 1, DP[i][j][k])
-		if k < 5 and x[i] == pattern[k]:
-			DP[i][j][k+1] = max(DP[i-1][j-1][k] + 1, DP[i][j][k+1])
-	else:
-		DP[i][j][k] = max(DP[i-1][j][k], DP[i][j-1][k])
-```
-
-`DP[m][n][5]` zawiera długość LCS.
-
-Rekonstrukcja:
-```
-i, j, k = m, n, 5
-result = []
-
-while i > 0 and j > 0:
-    if x[i] == y[j]:
-        if k > 0 and x[i] == pattern[k-1]:
-            # Znak jest częścią wzorca "aaabb"
-            result.append(x[i])
-            k -= 1
-        else:
-            # Znak jest częścią LCS, ale nie wzorca
-            result.append(x[i])
-        i -= 1
-        j -= 1
-    else:
-        if DP[i][j][k] == DP[i-1][j][k]:
-            i -= 1
-        else:
-            j -= 1
-
-return reverse(result)
-```
-
-
-## Nie zawiera podciągu "aaabb"
-
-```
-DP[x][y][5] - how much "aaabb" we matched so far
-```
-
-Na początku wszystko poza `DP[0][0][0]` to $-\infty$ 
-
-```
-for i from 0 to m:
-for j from 0 to n:
-for k from 0 to 5:
-	if i == 0 or j == 0:
-		DP[i][j][k] = 0 if k == 0 else -infinity
-		continue
-	if x[i] == y[j]:
-		if x[i] == pattern[k] and k < 4:
-            DP[i][j][k+1] = max(DP[i][j][k+1], DP[i-1][j-1][k] + 1)
-        DP[i][j][k] = max(DP[i][j][k], DP[i-1][j-1][k] + 1)
-	else:
-		DP[i][j][k] = max(DP[i-1][j][k], DP[i][j-1][k])
-```
-
-`max(DP[m][n][k<5])` zawiera długość LCS.
-
-```
-k = index of max(DP[m][n][0..4])  # Najlepszy stan bez pełnego wzorca
-i, j = m, n
-result = []
-
-while i > 0 and j > 0:
-    if x[i] == y[j]:
-        if k > 0 and x[i] == pattern[k-1]:
-            # Unikaj przejść, które skończyłyby wzorzec
-            if DP[i][j][k] == DP[i-1][j-1][k-1] + 1:
-                k -= 1
-        result.append(x[i])
-        i -= 1
-        j -= 1
-    else:
-        if DP[i][j][k] == DP[i-1][j][k]:
-            i -= 1
-        else:
-            j -= 1
-
-return reverse(result)
-```
-
-## Zawiera podsłowo "aaabb"
-
-`DP[x][y][k]` zawiera długość lcs dla $x$ liter z $X$, $y$ liter z $Y$ oraz dla
-k dopasowanych liter do wzorca.
-
-```
-for i from 0 to m:
-for j from 0 to n:
-for k from 0 to 5:
-	if i == 0 or j == 0:
-		DP[i][j][k] = 0 if k == 0 else -infinity
-		continue
-	if x[i] == y[j]:
-        if k < 5 and x[i] == pattern[k]:
-            DP[i][j][k+1] = max(DP[i][j][k+1], DP[i-1][j-1][k] + 1)
-        if x[i] != pattern[k]:
-            DP[i][j][0] = max(DP[i][j][0], DP[i-1][j-1][k] + 1)
-    else:
-        DP[i][j][k] = max(DP[i-1][j][k], DP[i][j-1][k])
-
-```
-
-`DP[m][n][5]` zawiera długość lcs.
-
-```
-i, j, k = m, n, 5
-result = []
-pattern_matched = False
-
-while i > 0 and j > 0:
-    if x[i] == y[j]:
-        if k > 0 and x[i] == pattern[k-1]:
-            result.append(x[i])
-            k -= 1
-            if k == 0:
-                pattern_matched = True
-        elif pattern_matched:
-            result.append(x[i])
-        i -= 1
-        j -= 1
-    else:
-        if DP[i][j][k] == DP[i-1][j][k]:
-            i -= 1
-        else:
-            j -= 1
-
-return reverse(result)
-```
-
-## Nie zawiera podsłowa "aaabb"
-
-`DP[x][y][k]` zawiera długość lcs dla $x$ liter z $X$, $y$ liter z $Y$ oraz dla
-k dopasowanych liter do wzorca.
-
-```
-for i from 0 to m:
-for j from 0 to n:
-for k from 0 to 5:
-	if i == 0 or j == 0:
-		DP[i][j][k] = 0 if k == 0 else -infinity
-		continue
-	if x[i] == y[j]:
-        if x[i] == pattern[k] and if k < 4:
-            DP[i][j][k+1] = max(DP[i][j][k+1], DP[i-1][j-1][k] + 1)
-        else:
-            DP[i][j][0] = max(DP[i][j][0], DP[i-1][j-1][k] + 1)
-    else:
-        DP[i][j][k] = max(DP[i-1][j][k], DP[i][j-1][k])
-
-```
-
-`DP[m][n][5]` zawiera długość lcs.
-
-```
-k = index of max(DP[m][n][0..4])  # Najlepszy stan bez pełnego wzorca
-i, j = m, n
-result = []
-
-while i > 0 and j > 0:
-    if x[i] == y[j]:
-        if k > 0 and x[i] == pattern[k-1]:
-            if DP[i][j][k] == DP[i-1][j-1][k-1] + 1:
-                k -= 1
-        else:
-            k = 0  # Reset, gdy znak nie pasuje do wzorca
-        result.append(x[i])
-        i -= 1
-        j -= 1
-    else:
-        if DP[i][j][k] == DP[i-1][j][k]:
-            i -= 1
-        else:
-            j -= 1
-
-return reverse(result)
-```
+![alt text](image-44.png)
 
 ---
 # Zadanie 7
 
-![[Pasted image 20250505160045.png]]
-
+![alt text](image-45.png)
 
 ---
 
 # Zadanie 8
 
-![[Pasted image 20250506092636.png]]
+![alt text](image-46.png)
 
 ## podp a
 

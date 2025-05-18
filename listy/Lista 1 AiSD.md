@@ -1,28 +1,12 @@
 # Zadanie 1
 
-![[Pasted image 20250310082526.png]]
+![alt text](image-12.png)
 
-$n$ - liczba elementów w obydwu kopcach łącznie.
-
-Elementy utrzymywane są na przemian, najpierw 1 element z kopca L, potem jeden z kopca H, 2 z kopca L, 2 z kopca H itd.
-
-
-## Przywracanie porządku
-
-przesuwanie niżej to przesuwanie w stronę elementu min, a wyżej to w stronę elementu max.
-### Przesuń-niżej
-
-procedure przesuń-niżej(K, i)
-
-### Przesuń w górę
-
-## Usuwanie minimum
-
-
+---
 
 # Zadanie 2
 
-![[Pasted image 20250310084950.png]]
+![alt text](image-13.png)
 
 Algorytm powinien to dobrać tak, żeby $a$ oraz $a + r$ to były jakieś liczby z list $L_i$.
 
@@ -53,8 +37,21 @@ Wtedy wszystkie wartości wskaźników są większe równe $a^*$
 
 TODO
 
+---
+
 # Zadanie 3
-![[Pasted image 20250310111141.png]]
 
+![alt text](image-14.png)
 
+---
+
+# Zadanie 4
+
+![alt text](image-15.png)
+
+---
+
+# Zadanie 5
+
+![alt text](image-16.png)
 

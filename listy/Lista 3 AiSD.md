@@ -1,18 +1,29 @@
+# Zadanie 1
+
+![alt text](image-29.png)
+
+---
+
+# Zadanie 2
+
+![alt text](image-30.png)
+
+---
 
 # Zadanie 3
 
-![[Pasted image 20250404110655.png]]
+![alt text](image-31.png)
 
 złożoność dzielenia (łączna) $rlogn$, bo każdy przedział $(p, k)\in S$ pojawia się w maksymalnie $logn$ przedziałach
 
 złożoność czasowa całego 
 $T(n)=2T(\frac{n}{2}) + \theta(n)$
 
-
 ---
 
 # Zadanie 4
-![[Pasted image 20250408125756.png]]
+
+![alt text](image-32.png)
 
 **Algorytm**
 ```
@@ -49,7 +60,7 @@ Jakiś dowód z niezmiennikiem, że w każdym kroku pętli mamy na stosie tylko 
 ---
 # Zadanie 5
 
-![[Pasted image 20250413144220.png]]
+![alt text](image-33.png)
 
 ## k = 2
 
@@ -83,10 +94,12 @@ możemy mnożyć kwadracić, więc gdybyśmy mogli szybciej kwadracić to moglib
 
 # Zadanie 6
 
+![alt text](image-34.png)
+
 ---
 # Zadanie 7
 
-![[Pasted image 20250414164338.png]]
+![alt text](image-35.png)
 
 Rozwiązuję zadanie b.
 
@@ -142,7 +155,7 @@ add_subtree() uzupełnia tab o wierzchołki z poddrzewa i
 
 # Zadanie 8
 
-![[Pasted image 20250414113609.png]]
+![alt text](image-36.png)
 
 Podczas scalania:
 ```python
@@ -171,10 +184,10 @@ Nasz algorytm poprawnie je zliczy.
 
 # Zadanie 9
 
-![[Pasted image 20250428090349.png]]
-
-
+![alt text](image-37.png)
 
 ---
 
 # Zadanie 10
+
+![alt text](image-38.png)
