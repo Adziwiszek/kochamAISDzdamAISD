@@ -231,7 +231,6 @@ $a_n = 2*a_{n-1}*c_{n-1} + b_{n-1}^2 = 4*a_{n-1} + 16^n$
 robimy macierzowanie jak u fibonacciego, za każdym razem robiąc modulo m.
 
 $$  
-
 \begin{bmatrix}
 4 & 1 \\ 0 & 16
 \end{bmatrix}^n
