@@ -14,9 +14,11 @@ for i <- i to n do:
 Pętla while wykona się $n - i$ razy dla ustalonego $i$.
 
 1) koszt P(i, j) to $\Theta(1)$ 
+
 	Koszt wywołania pętli while to $n-1$.
 	$\sum_{i=1}^{n} n-i = n^2 - \frac{n(n+1)}{2} = \frac{n(n-1)}{2}=\Theta(n^2)$
 2) koszt P(i, j) to $\Theta(j)$
+   
 	Koszt wywołania pętli while to $\Theta(\frac{n^2-i^2}{2})$ 
 	$\sum_{i=1}^{n} \Theta(\frac{n^2-i^2}{2}) = \Theta(\frac{n^3 - \sum_{i=1}^{n} i^2}{2})=\Theta(\frac{n^3}{2} - \frac{n(n+1)(2n+1)}{12})=\Theta(n^3)$
 	
@@ -31,15 +33,64 @@ for i <- i to n do:
 
 
 1) koszt P(i, j) to $\Theta(1)$  
-	Zewnętrzna pętla wykonuje się $\Omega(n)$ razy, więc stąd mamy ograniczenie dolne. 
-2) koszt P(i, j) to $\Theta(j)$
+   
+	Zewnętrzna pętla wykonuje się $\Omega(n)$ razy, więc stąd mamy ograniczenie dolne.
+	Żeby znaleźć ograniczenie górne policzymy ile razy podwoi się $j$ w
+	pętli while (czyli ile razy się ta pętla wykona).
 
+	Dla $i\in [\frac{n}{2},n]$ pętla wykona się tylko raz, bo 
+	podwojeniu $j$ wyskoczymy za $n$.
+
+	Dla $i\in [\frac{n}{4},\frac{n}{2})$ pętla wykona się dwa razy, bo 
+	podwojeniu $j$ najpierw wskoczymy do przedziału $[\frac{n}{2},n]$,
+	a potem poza $n$.
+
+	Widać, że liczbę wywołań określa taki ciąg: 
+	$\frac{n}{2}\cdot 1 + \frac{n}{4}\cdot 2 + \frac{n}{8}\cdot 3
+	+...+\frac{n}{2^k}\cdot k = n\sum_{k=1}^{logn} \frac{k}{2^k}$.
+
+	Możemy oszacować tę sumę z góry przez sumę nieskończoną:
+
+	$\frac{1}{2}$
+
+	$\frac{1}{4} \;\;\;\frac{1}{4}$
+
+	$\frac{1}{8} \;\;\;\frac{1}{8} \;\;\;\frac{1}{8}$
+
+	$\frac{1}{16}\;$ $\frac{1}{16}$ $\;\frac{1}{16}$
+
+	$\;\vdots \;\;\;\;\vdots\;\;\;\;\vdots$
+
+	$1 + \frac{1}{2}+\frac{1}{4} +\cdots =2$
+
+	Zatem $n\sum_{k=1}^{logn} \frac{k}{2^k}\leq 2n=O(n)$.
+
+	Pokazaliśmy to dla $n$ będącego potęgą 2, mówimy, że złożoność jest
+	monotoniczna, więc możemy ograniczyć dowolne $n$ z dwóch stron
+	potęgami dwójek.
+
+2) Koszt P(i, j) to $\Theta(j)$
+
+	Obliczmy koszt wykonania wewnętrznej pętli while dla ustalonego $i$:
+
+	$\Theta(i) + \Theta(2i) + \Theta(4i) + \cdots + 
+	\Theta(2^{log\frac{n}{i}}\cdot i)=
+	\Theta(i(1+2+4+\cdots+2^{log\frac{n}{i}}))=
+	\Theta(i(2^{1+log\frac{n}{i}}-\frac{1}{2}))=
+	\Theta(2i\cdot \frac{n}{i}-\frac{1}{2}i)=
+	\Theta(n)$
+
+	Ostatnia równość jest prawdziwa, bo $i$ jest maksymalnie $n$.
+
+	Mamy $n$ wywołań głównej pętli, więc ostateczna złożoność to 
+	$\Theta(n^2)$.
 
 ---
 
 # Zadanie 3
 
 ![alt text](image-3.png)
+
 
 ---
 
