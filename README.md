@@ -14,20 +14,20 @@
 
 ### Notatki adasia
 
-[Gra z adwersarze](notatki_wyklady/Gra%20z%20adwersarzem.md)
-[Quicksort](notatki_wyklady/Quick%20sort.md)
-[Sortowanie](notatki_wyklady/)
+[Gra z adwersarze](notatki_wyklady/Gra%20z%20adwersarzem.md) \
+[Quicksort](notatki_wyklady/Quick%20sort.md) \
+[Sortowanie](notatki_wyklady/) \
 
-[Kopce dwumianowe](notatki_wyklady/Kopce%20dwumianowe.md)
-[Kopce Fibonacciego](notatki_wyklady/Kopce%20Fibonacciego.md)
-[Drzewa AVL](notatki_wyklady/Drzewa%20AVL.md)
-[Drzewa czerwono-czarne](notatki_wyklady/Drzewa%20czerwono-czarne.md)
-[Drzewa splay](notatki_wyklady/Drzewa%20splay.md)
-[Drzewce](notatki_wyklady/Drzewce.md)
+[Kopce dwumianowe](notatki_wyklady/Kopce%20dwumianowe.md) \
+[Kopce Fibonacciego](notatki_wyklady/Kopce%20Fibonacciego.md) \
+[Drzewa AVL](notatki_wyklady/Drzewa%20AVL.md) \
+[Drzewa czerwono-czarne](notatki_wyklady/Drzewa%20czerwono-czarne.md) \
+[Drzewa splay](notatki_wyklady/Drzewa%20splay.md) \
+[Drzewce](notatki_wyklady/Drzewce.md) \
 
-[Union-Find](notatki_wyklady/Union%20find.md)
-[Haszowanie](notatki_wyklady/Hashowanie.md)
-[FFT](notatki_wyklady/Szybka%20transformacja%20Fouriera%20(FFT).md)
+[Union-Find](notatki_wyklady/Union%20find.md) \
+[Haszowanie](notatki_wyklady/Hashowanie.md) \
+[FFT](notatki_wyklady/Szybka%20transformacja%20Fouriera%20(FFT).md) \
 
 ## Rozwiązania zadań egzaminacyjnych
 
