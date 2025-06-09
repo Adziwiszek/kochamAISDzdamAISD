@@ -187,7 +187,7 @@ Działa tak samo jak w AVL. Rotacje zachowują kolejność elementów.
 **Koszt:** $O(\log n)$
 ## sum of even
 
-linowo, przejście in-order po wierzchołkach
+TODO
 
 ---
 
