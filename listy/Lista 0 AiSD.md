@@ -91,6 +91,36 @@ for i <- i to n do:
 
 ![alt text](image-3.png)
 
+Algorytm:
+
+```
+def pow(x, n):
+	result = 1
+	base = x
+	while n > 0:
+		if n % 2 == 1 then result *= base
+		n = n/2
+		base *= base
+	return result
+```
+
+Rozważmy koszty poszczególnych operacji:
+
+```n % 2 == 1``` - $log(n) - i$
+
+```n = n/2``` - $log(n) - i$
+
+```base *= base``` - $2log(x^{2^i})$
+
+```result *= base``` - $log(x^{2^i}) + log(result) \leq 2log(base)$,
+możemy pominąć ten składnik w szacowaniach
+
+Ostateczna suma szacująca złożoność:
+
+$\sum_{i=0}^{logn} logn - i + 2^{i+1}logx=
+log^2n + logx\sum_{i=0}^{logn}2^{i+1} - \frac{1+logn}{2}logn=
+(2n-2)logx + log^2n - \frac{1+logn}{2}logn=
+\Theta(n\;log\;x)$
 
 ---
 

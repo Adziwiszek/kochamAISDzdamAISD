@@ -2,6 +2,33 @@
 
 ![alt text](image-12.png)
 
+![alt text](image-47.png)
+
+Będziemy trzymać elementy w taki sposób, że dzieci `K[i]` będą w
+`K[2i+1]` oraz `K[2i+2]`, natomiast ociec `K[i]` będzie w 
+$K[\lfloor\frac{i-1}{2}\rfloor]$.
+
+## Weź ojca
+
+```
+def wez_ojca(i):
+    i <- (i + 1)/2
+    i <- i/2
+    kopiec <- i % 2
+    i <- 2i - kopiec
+    return i
+```
+
+## Weź lewego syna
+
+## Weź prawego syna
+
+## Weź połączenie
+
+## Przywróć porządek
+
+## Usuń minimum
+
 ---
 
 # Zadanie 2
