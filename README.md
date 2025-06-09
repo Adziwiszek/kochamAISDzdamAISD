@@ -11,3 +11,5 @@
 [Lista 4](listy/Lista%204%20AiSD.md)
 
 [Lista 5](listy/Lista%205%20AiSD.md)
+
+[Lista 6](listy/Lista%206%20AiSD.md)
