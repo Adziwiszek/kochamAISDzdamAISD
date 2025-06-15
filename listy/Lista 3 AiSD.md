@@ -8,6 +8,47 @@
 
 ![alt text](image-30.png)
 
+### A
+
+#TODO
+
+### B
+
+**Lemat:**
+Jeżeli pośród $n=2k$ elementów jest $k+x$ elementów rodzaju $e$, to par elementów $e$ jest nie mniej niż o $x$ więcej niż wszystkich innych par.
+**d-d:**
+Jeżeli chcemy utworzyć minimalnie-wiele par elementu $e$, to rozłożymy $k$ elementów do $k$ *różnych* par oraz pozostałymi $x$ utworzymy $x$ par.
+Teraz by utworzyć parę *innego* elementu potrzebujemy przełożyć $k$ gdzieś indziej – utworzyć dodatkową parę, więc tworząc parę *innego elementu* tworzymy dodatkowo parę elementu typu $e$ – tych par jest o $x$ więcej od par pozostałych elementów.
+
+To również dowodzi przypadku dla $n = 2k+1$, bo jeżeli *ostatni* element jest elementem większościowym, to mamy $k$ większościowych elementów oraz $k$ innych – par będzie co najwyżej równa ilość, ale dodatkowy większościowy przeważy.
+Jeżeli *ostatni* nie jest większościowy, to mamy co najmniej $k+2$ większościowych na $k$ par – będą o dwie pary większościowe większe – wszystko działa.
+
+#### Algorytm
+
+Połącz sąsiednie elementy w pary $\{(0,1), (2,3), \dots\}$, następnie do następnej iteracji przenieś po jednym elemencie z par takich samych elementów.
+Jeżeli elementów było nieparzyście-wiele, to po przejściu wszystkich par porównaj ostatni element ze wszystkimi innymi. Jeżeli występuje on $k$ razy dla $n = 2k+1$ to dodaj ten element do zbioru.
+
+Jeżeli na koniec otrzymamy jeden element, to jest to *kandydat* na element większościowy.
+By to sprawdzić liczymy jego wystąpienia w tablicy i jeżeli jest ich faktycznie więcej to wracamy.
+
+#### Dowód Poprawności
+
+**Niezmiennik:**
+
+- Jeżeli istnieje element większościowy, to jest on elementem większościowym podzbioru $P$.
+
+**Inicjalizacja:**
+Na początku $P = A$, więc oczywiście mamy zależność.
+
+**Krok Algorytmu:**
+Załóżmy, że istnieje element większościowy $e\in A$. Pokażmy, że jeżeli przed iteracją $e$ jest elementem większościowym $P$, to po iteracji jest elementem większościowym $P'$.
+Niech $n$ wyznacza liczność $P$.
+
+Jeżeli $2\mid n$, to mamy $n = 2k$ oraz wiemy, że elementów $e$ jest $k + x$ dla $x > 0$. Z lematu wiemy, że par elementów $e$ będzie więcej niż pozostałych par o co najmniej $x$.
+
+Jeżeli $2 \nmid n$, to mamy $n = 2k + 1$ oraz wiemy, że elementów e jest $k + x$ dla $x > 0$. Teraz jeżeli ostatni element to $e$, to par $e$ z pierwszych $2k$ elementów może być tyle samo co innych, ale dołożymy ostatni element po sprawdzeniu, że w pierwszej części jest ich co najmniej $k$.
+Jeżeli jakiś inny element jest ostatni, to argument jak dla $2\mid n$ i nie dokładamy dodatkowego ostatniego elementu (większość jest $e$).
+
 ---
 
 # Zadanie 3
@@ -185,6 +226,10 @@ Nasz algorytm poprawnie je zliczy.
 # Zadanie 9
 
 ![alt text](image-37.png)
+
+#TODO 
+
+> Wzorcowe ma głębokość $O(n \log \log n)$
 
 ---
 

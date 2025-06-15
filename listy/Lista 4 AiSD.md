@@ -2,6 +2,11 @@
 
 ![alt text](image-39.png)
 
+W każdym wierzchołku pamiętamy drogę najkrótsza i drugą-najkrótszą.
+Jak zachowamy ten niezmiennik, to na koniec wyznaczamy dwie najmniejsze wartości.
+
+Jak trzeba odtwarzać ścieżkę no to więcej wskaźników pamiętamy :/
+
 ---
 
 # Zadanie 2
@@ -177,12 +182,11 @@ trywialne
 
 ## Złożoność
 Pierwszy krok to $O(n^2)$ czasu i $O(n)$ pamięci. Po znalezieniu $k'$ wywołujemy się na 2 razy mniejszym obszarze.
+#TODO Fix obrazka
 ![[Pasted image 20250428084120.png]]
 
 Możemy oszacować czas jako:
-$$
-O(n^2)\cdot\sum_{i=0}^{\infty}\frac{1}{2^i}=2\cdot O(n^2)=O(n^2)
-$$
+$$O(n^2)\cdot\sum_{i=0}^{\infty}\frac{1}{2^i}=2\cdot O(n^2)=O(n^2)$$
 
 Dodatkowo jest czas skanowania, kiedy dojdziemy do liścia, ale ono jest wykonywane tylko raz dla każdego liścia (w najgorszym przypadku byłoby $O(n^2)$)
 
@@ -191,9 +195,7 @@ Na każdym poziomie rekursji potrzebujemy łącznie $O(n)$ pamięci, ale tylko d
 Głębokość rekursji to $log\:n$, na każdym poziomie musimy pamiętać tylko dwie liczby wskazujące na indeksy stringów. 
 
 Złożoność pamięciowa to 
-$$
-O(n + log\:n)=O(n)
-$$
+$$O(n + log\:n)=O(n)$$
 
 Poprawność wynika z lematu 1.
 
@@ -204,7 +206,7 @@ Poprawność wynika z lematu 1.
 ![alt text](image-43.png)
 
 **Fakt:**
-$$\forall v\in V \: \forall w\in V \:\:d(v,w) \geq 2 \Rightarrow vw \cancel{\in}E $$
+$$\forall v\in V \: \forall w\in V \:\:d(v,w) \geq 2 \Rightarrow vw \cancel{\in}E$$
 Dowód tego faktu wynika z tego, że mamy do czynienia z drzewem.
 
 Dodając kolejne wierzchołki niezależne możemy tylko zwiększyć sumę wag. Dlatego nie ma sensu zostawiać więcej niż dwa pod rząd niewybrane na ścieżce prostej.
@@ -300,13 +302,35 @@ Czas działania $O(n)$, pamięciowo $O(n)$.
 
 ![alt text](image-45.png)
 
+**Obserwacja:**
+Jeżeli zdecydujemy się wykonać najpierw cięcie w punkcie $a_i$, to wyznaczenie kolejności wykonywania cięć $a_{k<i}$ oraz $a_{k > i}$ są oddzielnymi problemami nie wpływającymi na siebie.
+Raczej oczywiste, a jak nie, to wziąć dowolne dwa przeplatania kolejności i pokazać, że mają identyczny koszt.
+
+Ta obserwacja prowadzi nas do następującego równania:
+$$\begin{align*}
+dp[i][j] &= \text{minimalny koszt wykonania podziałów } a_{i},\dots,a_{j} \text{ na odcinku } [a_{i}, a_{j}] \\
+&= \begin{cases}
+0 &: j - i \le 1 \\
+\min_{k\in\{i+1,\dots,j-1\}}(dp[i][k] + dp[k][j] + a_{j} - a_{i}) &: \text{w p.p.}
+\end{cases}
+\end{align*}$$
+> Dla wygody przyjmujemy $a_{0} = 0, a_{m+1} = n$, wtedy odpowiedź to $dp[0][m+1]$.
+
+### Dowód Poprawności
+
+Chyba widać...
+
+### Optymalizacja
+
+Dla tego $dp$ można zastosować *optymalizację Knuth'a*, by złożoność wynosiła $O(n^{2})$, a nie $O(n^{3})$.
+
 ---
 
 # Zadanie 8
 
 ![alt text](image-46.png)
 
-## podp a
+## A
 
 Sortujemy odcinki po punktach przecięcia z $l'$. Znajdujemy LIS punktów przecięcia z $l''$.
 Dwie proste przecinają się wtw, gdy ich punkty są w innej kolejności na obydwu prostych.
@@ -363,7 +387,7 @@ Niech i to indeks ostatniego elementu `tails`. Czyli LIS ma długość i i jego 
 
 Rekonstrukcja działa tak, że `pos[j]` trzyma indeks w tablicy `A` elementu na `tails[j]`. Natomiast `prev[i]`
 
-## podp b
+## B
 
 Tym razem zliczamu ile jest LIS.
 

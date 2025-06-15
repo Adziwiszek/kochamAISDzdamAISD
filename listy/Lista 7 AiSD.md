@@ -34,9 +34,7 @@ Dla każdej operacji find przejdziemy dokładnie jedną krawędź prowadzącą d
 Kluczowym faktem jest tutaj występowanie tylko jednej instrukcji `insert(i)` dla każdego $i$. To pozwoli nam na użycie efektywnych struktur dla zbiorów.
 
 Sekwencję $\sigma$ możemy zapisać jako:
-$$
-\sigma_{1}D\sigma_{2}\dots D\sigma_{k+1}
-$$
+$$\sigma_{1}D\sigma_{2}\dots D\sigma_{k+1}$$
 Gdzie $D$ oznacza operację `DeleteMin`.
 
 ### Dodatkowa Operacja UnionFind
@@ -229,9 +227,7 @@ Jedyną różnicą jest utrzymywanie dodatkowej tablicy, gdzie każda operacja z
 ### Poprawność
 
 Wynika z utrzymywanie przez wszystkie operacje niezmiennika:
-$$
-\sum\limits_{u\in\text{path(v,r)}}\text{h\_cost}[u] = \text{h}[v]
-$$
+$$\sum\limits_{u\in\text{path(v,r)}}\text{h\_cost}[u] = \text{h}[v]$$
 # Zadanie 4
 
 #TODO

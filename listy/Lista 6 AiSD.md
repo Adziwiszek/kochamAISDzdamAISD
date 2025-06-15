@@ -10,6 +10,10 @@ symulujemy rekurencję. Wybieramy pivota w sposób losowy. Potem szukamy maks i 
 
 ---
 
+Alternatywnie można każdy podział wykonywać idealnie na pół (znajdując medianę algorytmem Hoare'a). Wtedy nie musimy pamiętać zakresów, bo potrafimy je odtworzyć szybko.
+
+---
+
 # Zadanie 2
 
 ![alt text](image-49.png)
@@ -68,18 +72,15 @@ Niech $E(v)$ to oczekiwana praca wykonana przez wywołanie $v$.
 Dla $v$ na poziomie $k$: $E(v) = 2\cdot(\frac{3}{4})^k\cdot n$
 Łączny koszt:
 
-$$
-\sum_{k=1}^{logn}2\cdot(\frac{3}{4})^k\cdot n =
+$$\sum_{k=1}^{logn}2\cdot(\frac{3}{4})^k\cdot n =
 2n\sum_{k=1}^{logn}\cdot(\frac{3}{4})^k \leq
-2n\sum_{k=1}^{\infty}\cdot(\frac{3}{4})^k =
-6n
-$$
+2n\sum_{k=1}^{\infty}\cdot(\frac{3}{4})^k = 6n$$
 
 ## Wersja zwykła
 
 Niech $T$ to unarne drzewo wywołań rekurencyjnych procedury `Selection`.
 
-todo: przepisać ze zdjęcia z tablicy
+#TODO: przepisać ze zdjęcia z tablicy
 
 ---
 
@@ -187,7 +188,7 @@ Działa tak samo jak w AVL. Rotacje zachowują kolejność elementów.
 **Koszt:** $O(\log n)$
 ## sum of even
 
-TODO
+#TODO
 
 ---
 
@@ -196,3 +197,14 @@ TODO
 ![alt text](image-55.png)
 
 Zamiast dwóch bitów w węźle można trzymać po jednym bicie w każdym dziecku. Wtedy zmniejszymy ilość bitów o co najmniej połowę.
+
+---
+
+Zamiast jednego bitu w każdym wierzchołku można trzymać zero, jeżeli wykorzystamy zależność kolejności elementów w AVL do przechowywania wartości:
+
+- $0$, jeżeli lewe i prawe poddrzewo są 'w kolejnośći'
+- $1$, jeżeli zamienimy prawe i lewe drzewo miejscami
+
+Wtedy wszystko potrafimy odtworzyć, a nie pamiętamy *dodatkowych* informacji w drzewie.
+
+> To dobrze działa z liśćmi jeżeli w wierzchołkach przechowujemy *odległość do rodzica modulo 2*.
