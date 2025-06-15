@@ -1,3 +1,5 @@
+#TODO naprawić obrazki!
+
 # Zadanie 1
 
 ![[Pasted image 20250507155939.png]]
@@ -99,3 +101,62 @@ Skoro mamy a ustawione to nasz program przesuwa sobie wskaźniki start i end. Ki
 ## Złożoność
 
 Pętla for wykonuje się n-1 razy. Dla każdego i wewnętrzna pętla wykona się maksymalnie n-i-1 razy. Czyli łącznie mamy $O(n^2)$.
+
+# Zadania 6
+
+#TODO Treść
+
+Problem $3SUM$ dostaje na wejście $n$ liczb rzeczywistych $x_{1},\dots,x_{n}$.
+Będziemy chcieli przekształcić je na punkty $\mathbb{R}^{2}$ w taki sposób, by otrzymać $(x_{1},x_{1}^{3}),\dots,(x_{n},x_{n}^{3})$.
+
+Weźmy trzy wartości $a,b,c$ i sprawdźmy, czy punkty $(a,a^{3}),(b,b^{3}),(c,c^{3})$ są współliniowe, gdy się zerują:
+$$\begin{align*}
+\frac{1}{2}(a^{3}(c-b) + b^{3}(a-c) + c^{3}(b-a)) &= 0\\
+a^{3}(c-b) + b^{3}(a-c) + c^{3}(b-a) &= 0\\
+a^{3}(c-b) + b^{3}(a-c) + c^{3}(b-a) &+ \\
+\boxed{
+a^{2}b^{2}-ab^{2}c + abc^{2}-a^{2}c^{2}
++a^{2}bc-a^{2}b^{2} + b^{2}c^{2}-abc^{2}
++a^{2}c^{2}-a^{2}bc + ab^{2}c - b^{2}c^{2}} &= 0\\
+(a^{2}c - a^{2}b + b^{2}a-b^{2}c + c^{2}b-c^{2}a)(a+b+c) &= \\
+(a^{2}c - a^{2}b - abc + ab^{2} -ac^{2} + abc + bc^{2}-b^{2}c)(a + b + c) &= \\
+(a - c)(a - b)(c - b)(a + b + c) &= 0
+\end{align*}$$
+Wychodzimy od wzoru na pole trójkąta (tak naprawdę [[Wyznacznik Macierzy]]).
+Następnie przekształcamy do postaci, która jest zerowa tylko dla $a + b + c=0$, co wystarcza, bo bierzemy parami różne punkty.
+
+Otrzymujemy więc $\text{punkty współliniowe}\iff\text{3SUM}$.
+
+#### Co Jeżeli Nie Bierzemy Parami Różnych Punktów?
+
+Wtedy by algorytm działał poprawnie musimy zagwarantować, by do algorytmu znajdującego punkty współliniowe trafiły wyłącznie elementy *różne* – inaczej znajdziemy trywialne proste przechodzące przez wiele punktów w *jednym punkcie*.
+
+To można zrobić bardzo prosto w czasie $O(n\log n)$ na początku sortując wszystkie wartości, a następnie eliminując powtórzenia.
+Dla każdej powtarzającej się wartości sprawdzamy dodatkowo wyszukiwaniem binarnym, czy istnieje odpowiadająca tej parze trzecia wartość taka, że będą się sumować do zera.
+Przy okazji być może znajdziemy trójkę składającą się z samych zer.
+
+# Zadanie 7
+
+#TODO Treść
+
+Zdefiniujmy sekwencje $X_{i},Y_{i} : i\in\{1,\dots,2n\}$ w taki sposób, by porównanie $X_{k}[i] < Y_{k}[j]$ miało taką samą wartość dla $2n-1$ sekwencji.
+Wtedy będziemy mogli ułoży algorytm adwersarza, który dla każdego zapytania o porównanie będzie odpowiadał w taki sposób, by odrzucić tylko dokładnie jedną parę sekwencji.
+
+Niech *standardową* sekwencją będzie taka w której mamy kolejność:
+$$X[1] < Y[1] < X[2] < Y[2] < \dots < X[n] < Y[n]$$
+Dalej weźmy $n$ sekwencji w którym *jedynie* $X[i]$-ty element przesunięty jest o jedną w prawo w ciągu nierówności.
+Kolejne $n-1$ sekwencji można uzyskać przesuwając po kolei przesuwając $X[i]$-te elementy w lewo w ciągu nierówności (nie można przesunąć pierwszego, więc dlatego o jeden mniej).
+
+Teraz po kolei rozważmy dla ilu sekwencji prawdziwe są kolejne porównania:
+
+|               | $i < j-1$ | $i = j-1$              | $i=j$                   | $i=j+1$                | $i > j+1$ |
+| ------------- | --------- | ---------------------- | ----------------------- | ---------------------- | --------- |
+| $X[i] < Y[j]$ | T         | T                      | T oprócz $X[i]$ w prawo | F oprócz $X[i]$ w lewo | F         |
+| $Y[i] < X[j]$ | T         | T oprócz $X[i]$ w lewo | F oprócz $X[i]$ w prawo | F                      | F         |
+Czyli faktycznie będziemy potrafili eliminować co najwyżej jedną sekwencję każdym porównaniem.
+
+# Zadanie 8
+
+#TODO 
+
+> Mniej więcej trzeba pokazać, że można wymusić by element największy przegrał z $\lceil \log_{2}n \rceil$ innymi elementami, a wtedy wyznaczenie drugiego-największego wymaga wybrania największego z przegranych.
